@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HT19", "Shape_01\HT19.cspro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HT_18", "HT_LINQ\HT_18.csproj", "{433CA7CF-B5CC-46E2-97BD-C25191F5F00E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket_thread", "Basket_thread\Basket_thread.csproj", "{78C880B8-D281-432E-8924-C66327AAAA2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{433CA7CF-B5CC-46E2-97BD-C25191F5F00E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{433CA7CF-B5CC-46E2-97BD-C25191F5F00E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{433CA7CF-B5CC-46E2-97BD-C25191F5F00E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78C880B8-D281-432E-8924-C66327AAAA2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78C880B8-D281-432E-8924-C66327AAAA2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78C880B8-D281-432E-8924-C66327AAAA2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78C880B8-D281-432E-8924-C66327AAAA2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,5 +12,6 @@ namespace Basket_thread.Players
         Task<bool> PlayGame(Game curGame, Object locker, CancellationToken cancelToken);
         event Action TurnCompleted;
         event Action GetRightAnswer;
+        void UpdateGameSettings(int minValue, int maxValue);
     }
 }

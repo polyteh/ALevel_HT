@@ -13,7 +13,7 @@ namespace Basket_thread.Players
         public override event Action GetRightAnswer;
         public RegularPlayer(string PlayerName) : base(PlayerName)
         {
-            Console.WriteLine($"reg array size {this._curPlayerAnswers.Length}");
+           
         }
         public override Task<bool> PlayGame(Game curGame, Object locker, CancellationToken cancelToken)
         {
@@ -26,11 +26,12 @@ namespace Basket_thread.Players
                 {
                     if (curGame.Counter < curGame.MaxTurnNumber)
                     {
-                        int t = myRND.Next(_minWeight, _maxWeight+1);
-
+                        int playerAnswer = myRND.Next(_minWeight, _maxWeight+1);
+                        this._curPlayerAnswers[playerAnswer-_minWeight] = playerAnswer;
                         Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.WriteLine($"Random counter {curGame.Counter} on the tread {countThread.ManagedThreadId} value is {t}");
-                        if (curGame.Answer == t)
+                        Console.WriteLine($"Random counter {curGame.Counter} on the tread {countThread.ManagedThreadId} value is {playerAnswer}");
+                        // сравнили результат
+                        if (curGame.Answer == playerAnswer)
                         {
                             if (GetRightAnswer != null)
                             {
@@ -38,7 +39,7 @@ namespace Basket_thread.Players
                                 GetRightAnswer();
                             };
                         }
-
+                        // увеличили счетчик ходов в игре
                         if (TurnCompleted!=null)
                         {
                             TurnCompleted();

@@ -13,13 +13,13 @@ namespace Basket_thread.Players
         public override event Action GetRightAnswer;
         public UberPlayer(string PlayerName):base (PlayerName)
         {
-            Console.WriteLine($"uber array size {this._curPlayerAnswers.Length}");
+            
         }
         public override Task<bool> PlayGame(Game curGame, Object locker, CancellationToken cancelToken)
         {
             Console.WriteLine("uber player");
             Thread countThread = Thread.CurrentThread;
-            int i = 0;
+            int playerAnswer = _minWeight;
             while (!cancelToken.IsCancellationRequested)
             {
                 lock (locker)
@@ -27,8 +27,9 @@ namespace Basket_thread.Players
                     if (curGame.Counter < curGame.MaxTurnNumber)
                     {
                         Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.WriteLine($"Uber counter {curGame.Counter} on the tread {countThread.ManagedThreadId} value is {i}");
-                        if (curGame.Answer == i)
+                        Console.WriteLine($"Uber counter {curGame.Counter} on the tread {countThread.ManagedThreadId} value is {playerAnswer}");
+                        this._curPlayerAnswers[playerAnswer-_minWeight] = playerAnswer;
+                        if (curGame.Answer == playerAnswer)
                         {
                             if (GetRightAnswer != null)
                             {
@@ -40,7 +41,7 @@ namespace Basket_thread.Players
                         {
                             TurnCompleted();
                         };
-                        i++;
+                        playerAnswer++;
                     }
                     else
                     {

@@ -18,7 +18,7 @@ namespace Basket_thread
             RegularPlayer myRegPlayer = new RegularPlayer("Vilgelm");
             UberPlayer myUberPlayer = new UberPlayer("Gans");
 
-            Game newGame = new Game(5,10,7);
+            Game newGame = new Game(0,10,7);
 
             
 
@@ -35,6 +35,13 @@ namespace Basket_thread
                 var winner = newGame.GetWinner();
                 Console.WriteLine($"winner is {winner.GetType()} ");
             }
+            else
+            {
+                Console.WriteLine("No winner");
+            }
+
+            myRegPlayer.PrintAnswer();
+            myUberPlayer.PrintAnswer();
    
 
 

@@ -28,7 +28,7 @@ namespace Basket_thread.Players
                     {
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine($"Uber counter {curGame.Counter} on the tread {countThread.ManagedThreadId} value is {playerAnswer}");
-                        this._curPlayerAnswers[playerAnswer-_minWeight] = playerAnswer;
+                        this._curPlayerAnswers[playerAnswer-_minWeight] = 1;
                         if (curGame.Answer == playerAnswer)
                         {
                             if (GetRightAnswer != null)
@@ -36,7 +36,11 @@ namespace Basket_thread.Players
                                 this.MakeRightAnswer = true;
                                 GetRightAnswer();
                             };
-                        };
+                        }
+                        else
+                        {
+                            Player.RegisterPlayerAnswer(playerAnswer);
+                        }
                         if (TurnCompleted != null)
                         {
                             TurnCompleted();

@@ -87,7 +87,7 @@ namespace Basket_thread
                 //playersStartGame[0].Start();
                 //playersStartGame[1].Start();
 
-                // ка результат сделал так
+                // как результат сделал так
                 // типа в параллели заполнил набор тасков
                 Parallel.For(0,numberOfPlayers,(i)=> { playersStartGameTasks[i] = new Task(() => _playerList[i].PlayGame(this, _locker, _tokenSource.Token)); });
                 // запустили все таски
@@ -95,7 +95,7 @@ namespace Basket_thread
                 // ждем все таски
                 await Task.WhenAll(playersStartGameTasks);
                 // проверяем, есть ли победитель, если нет, то null
-                _winner = _playerList.Where((k) => k.MakeRightAnswer == true).DefaultIfEmpty(null).First();//First();
+                _winner = _playerList.Where((k) => k.MakeRightAnswer == true).DefaultIfEmpty(null).First();
                 if (_winner!=null)
                 {
                     return true;

@@ -80,12 +80,13 @@ namespace Basket_thread
             _maxWeight = maxValue;
             _gameAnswer = gameAnswer;
             _allPlayerAnswers = new int[_maxWeight - _minWeight + 1];
+            Console.WriteLine($"Array size of ABSTRACT player {_allPlayerAnswers.Length}");
 
         }
         // расчет и возврат расстояния от верного ответа до ближайшего ответа текущего игрока
         private int GetNearestAnswer()
         {
-            // выделили левую часть
+            // выделили левую часть, нашли ближайший ненулевой индекс к верному ответу
             var leftPart = this._curPlayerAnswers.Take(_gameAnswer).ToArray();
             var leftIndex = _gameAnswer - Array.FindLastIndex(leftPart, x => x > 0) - 1;
 
@@ -93,6 +94,18 @@ namespace Basket_thread
             var rightIndex = Array.FindIndex(rightPart.ToArray(), x => x > 0);
 
             return leftIndex < rightIndex ? leftIndex : rightIndex;
+        }
+        protected static void RegisterPlayerAnswer(int curPlayerAnswer)
+        {
+            Player._allPlayerAnswers[curPlayerAnswer - _minWeight] =1;
+        }
+        public static void PrintAllPlayerResults()
+        {
+            Console.WriteLine("All players answers");
+            foreach (var item in _allPlayerAnswers)
+            {
+                Console.Write($"{item,3}");
+            }
         }
 
     }
